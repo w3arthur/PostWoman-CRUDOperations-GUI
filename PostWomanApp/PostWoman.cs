@@ -21,18 +21,17 @@ namespace PostWomanApp
 
             txtMessage.Text = Data.EmptyMesage;
             txtResult.Text = Data.EmptyMesage;
-            upState();
+            UpState();
             
             txtAddress.Text = Configuration.ExampleUrl.Get; //Delete
             FocusTextBox(txtAddress);
-
 
         }
         
 
 
-        private void lblCredit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => LinkClicked(Configuration.Creator.Url);
-        private void lnlWebApp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)  => LinkClicked(Configuration.Creator.WebApp); 
+        private void lblCredit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => LinkClicked(Configuration.Creator.GithubUrl);
+        private void lnlWebApp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)  => LinkClicked(Configuration.Creator.WebAppUrl); 
         private void btnSend_Click(object sender, EventArgs e) => setResultsAsync();
         private void txtAddress_KeyDown(object sender, KeyEventArgs e) => PressedEnter(e);
         private void chkGet_KeyDown(object sender, KeyEventArgs e) => PressedEnter(e);
@@ -44,7 +43,7 @@ namespace PostWomanApp
         private void clrResult_Click(object sender, EventArgs e) => txtResult.Text = Data.EmptyMesage;
 
 
-        private Data upState()
+        private Data UpState()
         {
             return new Data()
             {
@@ -62,7 +61,7 @@ namespace PostWomanApp
         private async Task setResultsAsync()
         {
             txtResult.Text = Data.EmptyMesage;
-            Data data = upState();
+            Data data = UpState();
             string result = await data.SentAsync();
             if (result == null) return;
             txtResult.Text = HTTPClient.JsonPretty(result);

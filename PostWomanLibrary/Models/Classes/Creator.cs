@@ -8,8 +8,8 @@ namespace PostWomanLibrary.Models.Classes
 {
     public class Creator
     {
-        public string Url { get; set; }
-        public string WebApp { get; set; }
+        public string GithubUrl { get; set; }
+        public string WebAppUrl { get; set; }
         public int LifeMeaning { get; } = 42;
     }
 }

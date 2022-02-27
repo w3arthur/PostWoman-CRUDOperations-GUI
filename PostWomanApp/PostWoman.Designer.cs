@@ -369,10 +369,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LemonChiffon;
+            this.BackgroundImage = global::PostWomanApp.Properties.Resources.background;
             this.ClientSize = new System.Drawing.Size(573, 679);
             this.Controls.Add(this.pnlResult);
             this.Controls.Add(this.pnlMessage);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(591, 726);
             this.Name = "PostWoman";
+            this.Opacity = 0.98D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Post Woman";
             this.pnlMessage.ResumeLayout(false);

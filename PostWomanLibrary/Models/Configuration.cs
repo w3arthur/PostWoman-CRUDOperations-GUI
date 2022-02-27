@@ -16,8 +16,8 @@ namespace PostWomanLibrary.Models
 
         public static Creator Creator = new Creator()
         {
-            Url = "https://github.com/w3arthur",
-            WebApp = "https://post.arthur.tk",
+            GithubUrl = "https://github.com/w3arthur",
+            WebAppUrl = "https://post.arthur.tk",
         };
 
         public static ExampleUrl ExampleUrl = new ExampleUrl() 
