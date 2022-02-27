@@ -10,6 +10,7 @@ using System.Web;
 using System.Threading;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using Newtonsoft.Json.Linq;
 
 namespace PostWomanLibrary.Models
 {
@@ -31,6 +32,7 @@ namespace PostWomanLibrary.Models
         public static string HttpUrlDecode(string data) => HttpUtility.UrlDecode(data);
         public static Dictionary<string, string> PostMessageSplit(string requestBody)
             => requestBody.Split('&').Select(value => value.Split('=')).ToDictionary(pair => pair[0], pair => pair[1]);
+        public static string JsonPretty(string str) { try { string _str = JValue.Parse(str).ToString(Formatting.Indented); if (_str != null) return _str; } catch {} return str; }
         public static void OpenUrl(string url) {
             try { Process.Start(url); } 
             catch { 

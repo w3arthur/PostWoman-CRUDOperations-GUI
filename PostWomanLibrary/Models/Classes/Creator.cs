@@ -10,5 +10,6 @@ namespace PostWomanLibrary.Models.Classes
     {
         public string Url { get; set; }
         public string WebApp { get; set; }
+        public int LifeMeaning { get; } = 42;
     }
 }

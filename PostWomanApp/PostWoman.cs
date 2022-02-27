@@ -22,10 +22,14 @@ namespace PostWomanApp
             txtMessage.Text = Data.EmptyMesage;
             txtResult.Text = Data.EmptyMesage;
             upState();
-            txtAddress.Focus();
-
+            
             txtAddress.Text = Configuration.ExampleUrl.Get; //Delete
+            FocusTextBox(txtAddress);
+
+
         }
+        
+
 
         private void lblCredit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => LinkClicked(Configuration.Creator.Url);
         private void lnlWebApp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)  => LinkClicked(Configuration.Creator.WebApp); 
@@ -61,12 +65,14 @@ namespace PostWomanApp
             Data data = upState();
             string result = await data.SentAsync();
             if (result == null) return;
-            txtResult.Text = result;
+            txtResult.Text = HTTPClient.JsonPretty(result);
         }
 
+        
         private void PressedEnter(KeyEventArgs e) { if (e.KeyCode == Keys.Enter) btnSend.PerformClick(); }
         private void LinkClicked(string url) { try { HTTPClient.OpenUrl(url); } catch (Exception ex) { MessageBox.Show(ex.Message); } }
-        private void AddAddressArg() { txtAddress.Text += (txtAddress.Text).Contains("?") ? "&" : "?"; }
+        private void AddAddressArg() { txtAddress.Text += (txtAddress.Text).Contains("?") ? "&" : "?"; FocusTextBox(txtAddress); }
+        private void FocusTextBox(TextBox textBox) { int length = textBox.Text.Length; textBox.Select(); textBox.Select(length, length); }
 
     }
 }
