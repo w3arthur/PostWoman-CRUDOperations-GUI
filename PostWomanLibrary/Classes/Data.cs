@@ -19,24 +19,18 @@ namespace PostWomanLibrary.Classes
         public bool IsMessageData { get; private set; }
         public bool IsFileUpload { get; private set; }
 
-
+        
 
         public async Task<string> SentAsync()
         {
             try
             {
-                if (Type == Method.Get) return await HTTPClient.GetRequest(Action); 
-                else if (Type == Method.Post) 
+                switch (Type)
                 {
-                    return null;
-                }
-                else if (Type == Method.Put)
-                {
-                    return null;
-                }
-                else if (Type == Method.Delete)
-                {
-                    return null;
+                    case Method.Get: return await HTTPClient.GetRequest(Action);
+                    case Method.Post: return null;
+                    case Method.Put: return null;
+                    case Method.Delete: return null;
                 }
                 return null;
             }
